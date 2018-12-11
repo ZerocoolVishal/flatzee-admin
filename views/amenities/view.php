@@ -4,21 +4,22 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\BackendUser */
+/* @var $model app\models\Amenities */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Backend Users', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Amenities', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
+
 <div class="container-fluid">
-    <div class="backend-user-view">
+    <div class="amenities-view">
 
         <h1><?= Html::encode($this->title) ?></h1>
 
         <p>
-            <?= Html::a('Update', ['update', 'id' => $model->id, 'username' => $model->username], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('Delete', ['delete', 'id' => $model->id, 'username' => $model->username], [
+            <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
                 'data' => [
                     'confirm' => 'Are you sure you want to delete this item?',
@@ -31,11 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'model' => $model,
             'attributes' => [
                 'id',
-                'username',
-                'first_name',
-                'last_name',
-                'contact_number',
-                'email:email',
+                'name',
+                'icon',
             ],
         ]) ?>
 

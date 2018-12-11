@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\BackendUser;
+use app\models\Amenities;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BackendUserController implements the CRUD actions for BackendUser model.
+ * AmenitiesController implements the CRUD actions for Amenities model.
  */
-class BackendUserController extends Controller
+class AmenitiesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -29,22 +29,14 @@ class BackendUserController extends Controller
         ];
     }
 
-    public function beforeAction($action)
-    {
-        if(Yii::$app->user->isGuest) {
-            $this->redirect(['site/login']);
-        }
-        return true;
-    }
-
     /**
-     * Lists all BackendUser models.
+     * Lists all Amenities models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => BackendUser::find(),
+            'query' => Amenities::find(),
         ]);
 
         return $this->render('index', [
@@ -53,7 +45,7 @@ class BackendUserController extends Controller
     }
 
     /**
-     * Displays a single BackendUser model.
+     * Displays a single Amenities model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -66,24 +58,16 @@ class BackendUserController extends Controller
     }
 
     /**
-     * Creates a new BackendUser model.
+     * Creates a new Amenities model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new BackendUser();
+        $model = new Amenities();
 
-        $request = Yii::$app->request->post();
-        
-        if(isset($request['BackendUser'])) {
-            $request['BackendUser']['password'] = md5($request['BackendUser']['password']);
-            $request['BackendUser']['authKey'] = md5($request['BackendUser']['password'].$request['BackendUser']['username']);
-            $request['BackendUser']['accessToken'] = md5($request['BackendUser']['password'].$request['BackendUser']['username']);
-        }
-
-        if ($model->load($request) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'username' => $model->username]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -92,10 +76,9 @@ class BackendUserController extends Controller
     }
 
     /**
-     * Updates an existing BackendUser model.
+     * Updates an existing Amenities model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @param string $username
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -113,10 +96,9 @@ class BackendUserController extends Controller
     }
 
     /**
-     * Deletes an existing BackendUser model.
+     * Deletes an existing Amenities model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @param string $username
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -128,16 +110,15 @@ class BackendUserController extends Controller
     }
 
     /**
-     * Finds the BackendUser model based on its primary key value.
+     * Finds the Amenities model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @param string $username
-     * @return BackendUser the loaded model
+     * @return Amenities the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BackendUser::findOne(['id' => $id])) !== null) {
+        if (($model = Amenities::findOne($id)) !== null) {
             return $model;
         }
 

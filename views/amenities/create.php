@@ -3,14 +3,14 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\BackendUser */
+/* @var $model app\models\Amenities */
 
-$this->title = 'Create Backend User';
-$this->params['breadcrumbs'][] = ['label' => 'Backend Users', 'url' => ['index']];
+$this->title = 'Create Amenities';
+$this->params['breadcrumbs'][] = ['label' => 'Amenities', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
-    <div class="backend-user-create">
+    <div class="amenities-create">
 
         <h1><?= Html::encode($this->title) ?></h1>
 

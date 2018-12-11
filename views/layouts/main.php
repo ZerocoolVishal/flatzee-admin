@@ -35,7 +35,6 @@ AppAsset::register($this);
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="./index.html">
-        <!--<img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">-->
         <?= Html::img('http://www.flatzee.com/uploads/7b6600718647854f1fc5ee0d2f9d6d33_flatzeelogo.png', ['class' => 'navbar-brand-img']) ?>
       </a>
       <!-- User -->
@@ -55,7 +54,8 @@ AppAsset::register($this);
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="./assets/img/theme/team-1-800x800.jpg">
+                <!--<img alt="Image placeholder" src="./assets/img/theme/team-1-800x800.jpg">-->
+                <?= Html::img('@web/img/theme/team-1-800x800.jpg') ?>
               </span>
             </div>
           </a>
@@ -80,10 +80,7 @@ AppAsset::register($this);
               <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
-              <i class="ni ni-user-run"></i>
-              <span>Logout</span>
-            </a>
+            <?= Html::a('<i class="ni ni-user-run"></i><span>Logout</span>', ['site/logout'], ['class' => 'dropdown-item']) ?>
           </div>
         </li>
       </ul>
@@ -94,7 +91,7 @@ AppAsset::register($this);
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="./index.html">
-                <img src="./assets/img/brand/blue.png">
+              <?= Html::img('http://www.flatzee.com/uploads/7b6600718647854f1fc5ee0d2f9d6d33_flatzeelogo.png', ['class' => 'navbar-brand-img']) ?>
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -105,17 +102,7 @@ AppAsset::register($this);
             </div>
           </div>
         </div>
-        <!-- Form -->
-        <form class="mt-4 mb-3 d-md-none">
-          <div class="input-group input-group-rounded input-group-merge">
-            <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <span class="fa fa-search"></span>
-              </div>
-            </div>
-          </div>
-        </form>
+
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -123,6 +110,9 @@ AppAsset::register($this);
           </li>
           <li class="nav-item">
             <?= Html::a('<i class="ni ni-planet text-green"></i> Backend Users',['backend-user/'], ['class' => 'nav-link']) ?>
+          </li>
+          <li class="nav-item">
+            <?= Html::a('<i class="ni ni-air-baloon text-orange"></i> Amenities',['amenities/'], ['class' => 'nav-link']) ?>
           </li>
         </ul>
 
@@ -142,8 +132,9 @@ AppAsset::register($this);
 <div class="main-content">
 
     <?= Breadcrumbs::widget([
-        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-    ]) ?>
+      'itemTemplate' => "<li style='margin-right:5px'>{link} /</li>\n", 
+      'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ])?>
     <?= Alert::widget() ?>
 
     <!-- Page content -->
