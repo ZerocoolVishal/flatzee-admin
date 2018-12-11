@@ -21,11 +21,20 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700',
+        'vendor/nucleo/css/nucleo.css',
+        'vendor/@fortawesome/fontawesome-free/css/all.min.css',
+        'css/argon.css?v=1.0.0'
     ];
     public $js = [
+        'vendor/jquery/dist/jquery.min.js',
+        'vendor/bootstrap/dist/js/bootstrap.bundle.min.js',
+        'vendor/chart.js/dist/Chart.min.js',
+        'vendor/chart.js/dist/Chart.extension.js',
+        'js/argon.js?v=1.0.0',
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }

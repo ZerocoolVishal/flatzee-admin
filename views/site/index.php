@@ -1,10 +1,13 @@
 <?php
 
 /* @var $this yii\web\View */
+use yii\helpers\Html;
 
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
+
+    <?= (Yii::$app->user->isGuest) ? "" : "<h1>".Yii::$app->user->identity->username."</h1>" ?>
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>
