@@ -9,30 +9,28 @@ use yii\grid\GridView;
 $this->title = 'Backend Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="backend-user-index">
+<div class="container-fluid">
+    <div class="backend-user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Backend User', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+        <p>
+            <?= Html::a('Add Backend User', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'username',
-            'password',
-            'authKey',
-            'accessToken',
-            //'first_name',
-            //'last_name',
-            //'contact_number',
-            //'email:email',
+                'username',
+                'first_name',
+                'last_name',
+                'contact_number',
+                'email:email',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                ['class' => 'yii\grid\ActionColumn'],
+            ],
+        ]); ?>
+    </div>
 </div>

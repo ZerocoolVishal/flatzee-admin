@@ -10,12 +10,15 @@ $this->params['breadcrumbs'][] = ['label' => 'Backend Users', 'url' => ['index']
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id, 'username' => $model->username]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="backend-user-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container-fluid">
+    <div class="backend-user-update">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+        <h1><?= Html::encode($this->title) ?></h1>
 
+        <?= $this->render('_form', [
+            'model' => $model,
+        ]) ?>
+
+    </div>
 </div>

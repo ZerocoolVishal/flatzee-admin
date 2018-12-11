@@ -122,14 +122,7 @@ AppAsset::register($this);
             <?= Html::a('<i class="ni ni-tv-2 text-primary"></i> Dashboard', ['site/'], ['class' => 'nav-link']) ?>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examples/icons.html">
-              <i class="ni ni-planet text-blue"></i> Backend Users
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./examples/maps.html">
-              <i class="ni ni-pin-3 text-orange"></i> Maps
-            </a>
+            <?= Html::a('<i class="ni ni-planet text-green"></i> Backend Users',['backend-user/'], ['class' => 'nav-link']) ?>
           </li>
         </ul>
 
@@ -154,10 +147,9 @@ AppAsset::register($this);
     <?= Alert::widget() ?>
 
     <!-- Page content -->
+    <?= $content ?>  
+
     <div class="container-fluid mt-4">
-
-        <?= $content ?>
-
       <!-- Footer -->
       <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">

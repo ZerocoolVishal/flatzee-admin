@@ -29,6 +29,14 @@ class BackendUserController extends Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+        if(Yii::$app->user->isGuest) {
+            $this->redirect(['site/login']);
+        }
+        return true;
+    }
+
     /**
      * Lists all BackendUser models.
      * @return mixed
@@ -67,8 +75,16 @@ class BackendUserController extends Controller
     {
         $model = new BackendUser();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'username' => $model->username]);
+        $request = Yii::$app->request->post();
+        
+        if(isset($request['BackendUser'])) {
+            $request['BackendUser']['password'] = md5($request['BackendUser']['password']);
+            $request['BackendUser']['authKey'] = md5($request['BackendUser']['password'].$request['BackendUser']['username']);
+            $request['BackendUser']['accessToken'] = md5($request['BackendUser']['password'].$request['BackendUser']['username']);
+        }
+
+        if ($model->load($request) && $model->save()) {
+            //return $this->redirect(['view', 'id' => $model->id, 'username' => $model->username]);
         }
 
         return $this->render('create', [
