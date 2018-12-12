@@ -35,9 +35,9 @@ class Appointment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'date', 'time', 'property_id', 'status', 'users_is'], 'required'],
-            [['id', 'property_id', 'status', 'users_is', 'agent_id'], 'integer'],
+            [['date', 'time', 'property_id', 'status', 'users_is'], 'required'],
             [['date', 'time'], 'safe'],
+            [['property_id', 'status', 'users_is', 'agent_id'], 'integer'],
             [['property_id'], 'exist', 'skipOnError' => true, 'targetClass' => Property::className(), 'targetAttribute' => ['property_id' => 'id']],
             [['users_is'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['users_is' => 'id']],
             [['agent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Agents::className(), 'targetAttribute' => ['agent_id' => 'id']],
@@ -53,10 +53,10 @@ class Appointment extends \yii\db\ActiveRecord
             'id' => 'ID',
             'date' => 'Date',
             'time' => 'Time',
-            'property_id' => 'Property ID',
+            'property_id' => 'Property',
             'status' => 'Status',
-            'users_is' => 'Users Is',
-            'agent_id' => 'Agent ID',
+            'users_is' => 'User',
+            'agent_id' => 'Agent',
         ];
     }
 

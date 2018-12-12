@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use \yii\helpers\ArrayHelper;
+use \app\models\PropertyStatus;
+use \app\models\PropertyTypes;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Property */
@@ -58,11 +61,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'available_to')->textInput() ?>
 
-    <?= $form->field($model, 'type')->textInput() ?>
+    <?= $form->field($model, 'type')->dropDownList(ArrayHelper::map(PropertyTypes::find()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'current_status')->textInput() ?>
+    <?= $form->field($model, 'current_status')->dropDownList(ArrayHelper::map(PropertyStatus::find()->all(), 'id', 'status_title')) ?>
 
-    <?= $form->field($model, 'date_added')->textInput() ?>
+    <?= $form->field($model, 'date_added')->textInput([
+            'type' => 'date',
+            'data-date-format' => 'yyyy-mm-dd',
+            'data-provide' => 'datepicker'
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

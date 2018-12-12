@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Property;
-use yii\base\Model;
+use app\models\Appointment;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PropertyController implements the CRUD actions for Property model.
+ * AppointmentController implements the CRUD actions for Appointment model.
  */
-class PropertyController extends Controller
+class AppointmentController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,13 +30,13 @@ class PropertyController extends Controller
     }
 
     /**
-     * Lists all Property models.
+     * Lists all Appointment models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Property::find(),
+            'query' => Appointment::find(),
         ]);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class PropertyController extends Controller
     }
 
     /**
-     * Displays a single Property model.
+     * Displays a single Appointment model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,13 +58,13 @@ class PropertyController extends Controller
     }
 
     /**
-     * Creates a new Property model.
+     * Creates a new Appointment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Property();
+        $model = new Appointment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -77,7 +76,7 @@ class PropertyController extends Controller
     }
 
     /**
-     * Updates an existing Property model.
+     * Updates an existing Appointment model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +96,7 @@ class PropertyController extends Controller
     }
 
     /**
-     * Deletes an existing Property model.
+     * Deletes an existing Appointment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -111,35 +110,18 @@ class PropertyController extends Controller
     }
 
     /**
-     * Finds the Property model based on its primary key value.
+     * Finds the Appointment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Property the loaded model
+     * @return Appointment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Property::findOne(['id' => $id])) !== null) {
+        if (($model = Appointment::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    public function actionBedroom_form()
-    {
-        $model = new \app\models\BedroomAmenities();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-
-        return $this->render('bedroom_create', [
-            'model' => $model,
-        ]);
-    }
-
 }
