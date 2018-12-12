@@ -6,19 +6,19 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Agents';
+$this->title = 'Property Types';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container-fluid">
-    <div class="agents-index">
+    <div class="property-types-index">
 
         <h1><?= Html::encode($this->title) ?></h1>
 
         <p>
-            <?= Html::a('Add Agents', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Create Property Types', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
 
-        <?= $this->render('_agents_table', ['data' => $dataProvider->getModels()]) ?>
+        <?= $this->render('_property_type_table', ['data' => $dataProvider->getModels()]) ?>
     </div>
 </div>
