@@ -2,7 +2,7 @@
     <a href="#" target="_blank">
         <img src="http://www.flatzee.com/uploads/7b6600718647854f1fc5ee0d2f9d6d33_flatzeelogo.png">
     </a>
-    <h1 align="center">FlatZee Adminpanel</h1>
+    <h1 align="center">FlatZee Admin Dashboard</h1>
     <br>
 </p>
 
