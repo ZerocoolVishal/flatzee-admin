@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container-fluid">
-    <div class="property-types-view">
+    <div class="property-types-view card shadow p-5 mt-5">
 
         <h1><?= Html::encode($this->title) ?></h1>
 

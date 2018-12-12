@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 
 <div class="container-fluid">
-    <div class="backend-user-update">
+    <div class="backend-user-update card shadow p-5 mt-5">
 
         <h1><?= Html::encode($this->title) ?></h1>
 

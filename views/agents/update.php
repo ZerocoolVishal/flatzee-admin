@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 
 <div class="container-fluid">
-    <div class="agents-update">
+    <div class="agents-update card shadow p-5 mt-5">
 
         <h1><?= Html::encode($this->title) ?></h1>
 

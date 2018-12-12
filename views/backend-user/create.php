@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Backend Users', 'url' => ['index']
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
-    <div class="backend-user-create">
+    <div class="backend-user-create card shadow p-5 mt-5">
 
         <h1><?= Html::encode($this->title) ?></h1>
 

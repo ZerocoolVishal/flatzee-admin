@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Agents', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
-    <div class="agents-create">
+    <div class="agents-create card shadow p-5 mt-5">
 
         <h1><?= Html::encode($this->title) ?></h1>
 

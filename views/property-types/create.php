@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Property Types', 'url' => ['index'
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
-    <div class="property-types-create">
+    <div class="property-types-create card shadow p-5 mt-5 col-lg-6">
 
         <h1><?= Html::encode($this->title) ?></h1>
 

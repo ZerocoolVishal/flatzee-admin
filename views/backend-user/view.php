@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="container-fluid">
-    <div class="backend-user-view">
+    <div class="backend-user-view card shadow p-5 mt-5">
 
         <h1><?= Html::encode($this->title) ?></h1>
 
