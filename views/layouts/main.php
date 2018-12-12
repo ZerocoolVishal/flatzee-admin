@@ -113,6 +113,9 @@ AppAsset::register($this);
                     <?= Html::a('<i class="ni ni-air-baloon text-purple"></i> Agents', ['agents/'], ['class' => (Yii::$app->controller->id == "agents")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
+                    <?= Html::a('<i class="ni ni-air-baloon text-green"></i> Properties', ['property/'], ['class' => (Yii::$app->controller->id == "property")? 'nav-link active' : 'nav-link']) ?>
+                </li>
+                <li class="nav-item">
                     <?= Html::a('<i class="ni ni-air-baloon text-orange"></i> Amenities', ['amenities/'], ['class' => (Yii::$app->controller->id == "amenities")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">

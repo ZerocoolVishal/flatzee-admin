@@ -47,14 +47,13 @@ class PropertyController extends Controller
     /**
      * Displays a single Property model.
      * @param integer $id
-     * @param string $slug
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $slug)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $slug),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -68,7 +67,7 @@ class PropertyController extends Controller
         $model = new Property();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'slug' => $model->slug]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -80,16 +79,15 @@ class PropertyController extends Controller
      * Updates an existing Property model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @param string $slug
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $slug)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $slug);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'slug' => $model->slug]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -101,13 +99,12 @@ class PropertyController extends Controller
      * Deletes an existing Property model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @param string $slug
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $slug)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $slug)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -116,13 +113,12 @@ class PropertyController extends Controller
      * Finds the Property model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @param string $slug
      * @return Property the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $slug)
+    protected function findModel($id)
     {
-        if (($model = Property::findOne(['id' => $id, 'slug' => $slug])) !== null) {
+        if (($model = Property::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

@@ -42,7 +42,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'facing')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'monthly_maintenance')->textInput() ?>
 
