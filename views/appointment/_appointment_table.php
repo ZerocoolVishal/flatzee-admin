@@ -24,7 +24,9 @@
                     <td><?= $i->id ?></td>
                     <td><?= $i->date ?></td>
                     <td><?= $i->time ?></td>
-                    <td><?= $i->property->title ?></td>
+                    <td>
+                        <?= Html::a($i->property->title, ["property/view", 'id' => $i->agent->id], ['target' => '_blank']) ?>
+                    </td>
                     <td>
                         <?= Html::a($i->usersIs->first_name." ".$i->usersIs->last_name, ["users/view", 'id' => $i->agent->id], ['target' => '_blank']) ?>
                     </td>

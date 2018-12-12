@@ -36,24 +36,12 @@ AppAsset::register($this);
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="./index.html">
+        <a class="navbar-brand pt-0 mb--5" href="./index.html">
             <?= Html::img('http://www.flatzee.com/uploads/7b6600718647854f1fc5ee0d2f9d6d33_flatzeelogo.png', ['class' => 'navbar-brand-img']) ?>
+            <p>Admin Dashboard</p>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
-            <li class="nav-item dropdown">
-                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">
-                    <i class="ni ni-bell-55"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right"
-                     aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                    aria-expanded="false">
@@ -104,25 +92,25 @@ AppAsset::register($this);
                     <?= Html::a('<i class="ni ni-tv-2 text-primary"></i> Dashboard', ['site/'], ['class' => (Yii::$app->controller->id == "site")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-tv-2 text-cyan"></i> Appointments', ['appointment/'], ['class' => (Yii::$app->controller->id == "appointment")? 'nav-link active' : 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-archive-2 text-cyan"></i> Appointments', ['appointment/'], ['class' => (Yii::$app->controller->id == "appointment")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-yellow"></i> Users', ['users/'], ['class' => (Yii::$app->controller->id == "users")? 'nav-link active' : 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-single-02 text-yellow"></i> Users', ['users/'], ['class' => (Yii::$app->controller->id == "users")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-planet text-green"></i> Backend Users', ['backend-user/'], ['class' => (Yii::$app->controller->id == "backend-user")? 'nav-link active' : 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-badge text-green"></i> Backend Users', ['backend-user/'], ['class' => (Yii::$app->controller->id == "backend-user")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-purple"></i> Agents', ['agents/'], ['class' => (Yii::$app->controller->id == "agents")? 'nav-link active' : 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-tie-bow text-purple"></i> Agents', ['agents/'], ['class' => (Yii::$app->controller->id == "agents")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-green"></i> Properties', ['property/'], ['class' => (Yii::$app->controller->id == "property")? 'nav-link active' : 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-building text-green"></i> Properties', ['property/'], ['class' => (Yii::$app->controller->id == "property")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-orange"></i> Amenities', ['amenities/'], ['class' => (Yii::$app->controller->id == "amenities")? 'nav-link active' : 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-spaceship text-orange"></i> Amenities', ['amenities/'], ['class' => (Yii::$app->controller->id == "amenities")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-yellow"></i> Property Types', ['property-types/'], ['class' => (Yii::$app->controller->id == "property-types")? 'nav-link active' : 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-shop text-yellow"></i> Property Types', ['property-types/'], ['class' => (Yii::$app->controller->id == "property-types")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
                     <?= Html::a('<i class="ni ni-air-baloon text-cyan"></i> Property Status', ['property-status/'], ['class' => (Yii::$app->controller->id == "property-status")? 'nav-link active' : 'nav-link']) ?>

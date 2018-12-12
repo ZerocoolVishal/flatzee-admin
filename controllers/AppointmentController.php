@@ -67,6 +67,10 @@ class AppointmentController extends Controller
         $model = new Appointment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            //Create no. of bedrooms
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1><?= Html::encode($this->title) ?></h1>
 
         <p>
-            <?= Html::a('Create Property Types', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Create Property Type', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
 
         <?= $this->render('_property_type_table', ['data' => $dataProvider->getModels()]) ?>

@@ -12,6 +12,7 @@ use Yii;
  * @property string $slug
  * @property string $negotiable
  * @property int $price
+ * @property int $no_of_bedrooms
  * @property string $bathroom
  * @property string $balconies
  * @property string $society
@@ -57,8 +58,8 @@ class Property extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'slug', 'negotiable', 'price', 'bathroom', 'balconies', 'society', 'super_area', 'build_up_area', 'carpet_area', 'furnished_status', 'car_parking', 'floor', 'total_floor', 'facing', 'description', 'monthly_maintenance', 'security_deposit', 'location', 'landmarks', 'age_of_construction', 'available_since', 'available_to', 'type', 'current_status', 'date_added'], 'required'],
-            [['price', 'floor', 'total_floor', 'age_of_construction', 'available_to', 'type', 'current_status'], 'integer'],
+            [['title', 'slug', 'negotiable', 'price', 'no_of_bedrooms', 'bathroom', 'balconies', 'society', 'super_area', 'build_up_area', 'carpet_area', 'furnished_status', 'car_parking', 'floor', 'total_floor', 'facing', 'description', 'monthly_maintenance', 'security_deposit', 'location', 'landmarks', 'age_of_construction', 'available_since', 'available_to', 'type', 'current_status', 'date_added'], 'required'],
+            [['price', 'no_of_bedrooms', 'floor', 'total_floor', 'age_of_construction', 'available_to', 'type', 'current_status'], 'integer'],
             [['super_area', 'build_up_area', 'carpet_area', 'monthly_maintenance', 'security_deposit'], 'number'],
             [['date_added'], 'safe'],
             [['title', 'slug', 'negotiable', 'bathroom', 'balconies', 'society', 'furnished_status', 'car_parking', 'facing', 'location', 'landmarks', 'available_since'], 'string', 'max' => 255],
@@ -79,6 +80,7 @@ class Property extends \yii\db\ActiveRecord
             'slug' => 'Slug',
             'negotiable' => 'Negotiable',
             'price' => 'Price',
+            'no_of_bedrooms' => 'No Of Bedrooms',
             'bathroom' => 'Bathroom',
             'balconies' => 'Balconies',
             'society' => 'Society',

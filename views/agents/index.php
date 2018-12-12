@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1><?= Html::encode($this->title) ?></h1>
 
         <p>
-            <?= Html::a('Add Agents', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Add Agent', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
 
         <?= $this->render('_agents_table', ['data' => $dataProvider->getModels()]) ?>

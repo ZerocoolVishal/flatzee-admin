@@ -9,6 +9,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Bedroom;
 
 /**
  * PropertyController implements the CRUD actions for Property model.
@@ -67,7 +68,21 @@ class PropertyController extends Controller
     {
         $model = new Property();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $request = Yii::$app->request->post();
+
+        if(isset($request['Property']['title']))
+        {
+            $request['Property']['slug'] = strtolower(str_replace(' ', '-', $request['Property']['title']));
+        }
+
+        if ($model->load($request) && $model->save()) {
+
+            for($i = 0; $i < $model->no_of_bedrooms; $i++) {
+                $bedroom = new Bedroom();
+                $bedroom->property_id = $model->id;
+                $bedroom->save();
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -87,7 +102,14 @@ class PropertyController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $request = Yii::$app->request->post();
+
+        if(isset($request['Property']['title']))
+        {
+            $request['Property']['slug'] = strtolower(str_replace(' ', '-', $request['Property']['title']));
+        }
+
+        if ($model->load($request) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -126,20 +148,27 @@ class PropertyController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionBedroom_form()
+    public function actionBedroom_amenity_form()
     {
+        $request = Yii::$app->request->get();
+
         $model = new \app\models\BedroomAmenities();
 
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
+        if(isset($request['bedroom_id'])) {
+
+            if ($model->load(Yii::$app->request->post())) {
+                if ($model->validate()) {
+                    $model->save();
+                    return $this->redirect(['property/']);
+                }
             }
+
+            $model->bedroom_id = $request['bedroom_id'];
+
+            return $this->render('bedroom_create', [
+                'model' => $model,
+            ]);
+
         }
-
-        return $this->render('bedroom_create', [
-            'model' => $model,
-        ]);
     }
-
 }

@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1><?= Html::encode($this->title) ?></h1>
 
         <p>
-            <?= Html::a('Add Users', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Add User', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
 
         <?= $this->render('_user_table', ['data' => $dataProvider->getModels()]) ?>

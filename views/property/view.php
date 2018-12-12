@@ -61,6 +61,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
 
+        <div class="mt-4">
+            <table class="table table-striped table-bordered detail-view">
+                <?php
+                $i = 1;
+                foreach ($model->bedrooms as $bedroom) {
+                    echo "<tr>";
+                    echo "<td><b>Bedroom: $i</b></td>";
+                    foreach ($bedroom->bedroomAmenities as $amenity) {
+                        echo "<td>".$amenity->amenityIr->name." ".$amenity->amenityIr->icon."</td>";
+                    }
+                    echo "</tr>";
+                    $i++;
+                }?>
+            </table>
+        </div>
+
     </div>
 </div>
 

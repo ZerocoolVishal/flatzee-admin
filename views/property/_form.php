@@ -17,11 +17,11 @@ use \app\models\PropertyTypes;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'negotiable')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
+
+    <?= $form->field($model, 'no_of_bedrooms')->textInput() ?>
 
     <?= $form->field($model, 'bathroom')->textInput(['maxlength' => true]) ?>
 

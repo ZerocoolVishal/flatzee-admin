@@ -45,7 +45,7 @@ class BedroomAmenities extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'bedroom_id' => 'Bedroom ID',
-            'amenity_ir' => 'Amenity Ir',
+            'amenity_ir' => 'Amenity',
         ];
     }
 
