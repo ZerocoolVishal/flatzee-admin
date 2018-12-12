@@ -21,7 +21,7 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Yii::$app->name.' - '.Html::encode($this->title) ?></title>
+    <title><?= Yii::$app->name . ' - ' . Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -68,21 +68,9 @@ AppAsset::register($this);
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome!</h6>
                     </div>
-                    <a href="./examples/profile.html" class="dropdown-item">
+                    <a href="#" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>My profile</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>Settings</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>Activity</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>Support</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <?= Html::a('<i class="ni ni-user-run"></i><span>Logout</span>', ['site/logout'], ['class' => 'dropdown-item']) ?>
@@ -113,22 +101,25 @@ AppAsset::register($this);
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-tv-2 text-primary"></i> Dashboard', ['site/'], ['class' => 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-tv-2 text-primary"></i> Dashboard', ['site/'], ['class' => (Yii::$app->controller->id == "site")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-yellow"></i> Users', ['users/'], ['class' => 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-air-baloon text-yellow"></i> Users', ['users/'], ['class' => (Yii::$app->controller->id == "users")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-planet text-green"></i> Backend Users', ['backend-user/'], ['class' => 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-planet text-green"></i> Backend Users', ['backend-user/'], ['class' => (Yii::$app->controller->id == "backend-user")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-purple"></i> Agents', ['agents/'], ['class' => 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-air-baloon text-purple"></i> Agents', ['agents/'], ['class' => (Yii::$app->controller->id == "agents")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-orange"></i> Amenities', ['amenities/'], ['class' => 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-air-baloon text-orange"></i> Amenities', ['amenities/'], ['class' => (Yii::$app->controller->id == "amenities")? 'nav-link active' : 'nav-link']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= Html::a('<i class="ni ni-air-baloon text-yellow"></i> Property Types', ['property-types/'], ['class' => 'nav-link']) ?>
+                    <?= Html::a('<i class="ni ni-air-baloon text-yellow"></i> Property Types', ['property-types/'], ['class' => (Yii::$app->controller->id == "property-types")? 'nav-link active' : 'nav-link']) ?>
+                </li>
+                <li class="nav-item">
+                    <?= Html::a('<i class="ni ni-air-baloon text-cyan"></i> Property Status', ['property-status/'], ['class' => (Yii::$app->controller->id == "property-status")? 'nav-link active' : 'nav-link']) ?>
                 </li>
             </ul>
 

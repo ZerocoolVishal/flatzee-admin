@@ -30,6 +30,18 @@ class AgentsController extends Controller
     }
 
     /**
+     * @param $action
+     * @return bool
+     */
+    public function beforeAction($action)
+    {
+        if(Yii::$app->user->isGuest) {
+            $this->redirect(['site/login']);
+        }
+        return true;
+    }
+
+    /**
      * Lists all Agents models.
      * @return mixed
      */

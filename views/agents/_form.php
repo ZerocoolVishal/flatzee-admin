@@ -22,11 +22,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'address')->textInput(['maxlength' => true])->textarea() ?>
 
-    <?= $form->field($model, 'verified')->textInput() ?>
+    <?= $form->field($model, 'verified')->dropDownList(['1' => 'Yes', '0' => 'No']) ?>
 
-    <?= $form->field($model, 'rera_registered')->textInput() ?>
+    <?= $form->field($model, 'rera_registered')->dropDownList(['1' => 'Yes', '0' => 'No'])?>
 
     <?= $form->field($model, 'rera_number')->textInput(['maxlength' => true]) ?>
 

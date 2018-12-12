@@ -29,7 +29,7 @@ class PropertyStatus extends \yii\db\ActiveRecord
     {
         return [
             [['status_title'], 'required'],
-            [['status_title'], 'integer'],
+            [['status_title'], 'string', 'max' => 255],
         ];
     }
 

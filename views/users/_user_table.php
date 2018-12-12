@@ -2,7 +2,7 @@
 
 <div class="card shadow mb-7">
   <div class="card-header border-0">
-    <h3 class="mb-0">Backend Users</h3>
+    <h3 class="mb-0">Users</h3>
   </div>
   <div class="table-responsive">
     <table class="table align-items-center table-flush">

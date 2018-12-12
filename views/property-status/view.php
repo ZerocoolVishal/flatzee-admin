@@ -4,16 +4,16 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Users */
+/* @var $model app\models\PropertyStatus */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Property Statuses', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 
 <div class="container-fluid">
-    <div class="users-view card shadow p-5 mt-5">
+    <div class="property-status-view card shadow p-5 mt-5">
 
         <h1><?= Html::encode($this->title) ?></h1>
 
@@ -32,14 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'model' => $model,
             'attributes' => [
                 'id',
-                'username',
-                'first_name',
-                'last_name',
-                'contact_number',
-                'email:email',
+                'status_title',
             ],
         ]) ?>
 
     </div>
 </div>
-

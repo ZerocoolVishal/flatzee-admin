@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\PropertyTypes;
+use app\models\PropertyStatus;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PropertyTypesController implements the CRUD actions for PropertyTypes model.
+ * PropertyStatusController implements the CRUD actions for PropertyStatus model.
  */
-class PropertyTypesController extends Controller
+class PropertyStatusController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,25 +30,13 @@ class PropertyTypesController extends Controller
     }
 
     /**
-     * @param $action
-     * @return bool
-     */
-    public function beforeAction($action)
-    {
-        if(Yii::$app->user->isGuest) {
-            $this->redirect(['site/login']);
-        }
-        return true;
-    }
-
-    /**
-     * Lists all PropertyTypes models.
+     * Lists all PropertyStatus models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => PropertyTypes::find(),
+            'query' => PropertyStatus::find(),
         ]);
 
         return $this->render('index', [
@@ -57,7 +45,7 @@ class PropertyTypesController extends Controller
     }
 
     /**
-     * Displays a single PropertyTypes model.
+     * Displays a single PropertyStatus model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -70,13 +58,13 @@ class PropertyTypesController extends Controller
     }
 
     /**
-     * Creates a new PropertyTypes model.
+     * Creates a new PropertyStatus model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new PropertyTypes();
+        $model = new PropertyStatus();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -88,7 +76,7 @@ class PropertyTypesController extends Controller
     }
 
     /**
-     * Updates an existing PropertyTypes model.
+     * Updates an existing PropertyStatus model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -108,7 +96,7 @@ class PropertyTypesController extends Controller
     }
 
     /**
-     * Deletes an existing PropertyTypes model.
+     * Deletes an existing PropertyStatus model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -122,15 +110,15 @@ class PropertyTypesController extends Controller
     }
 
     /**
-     * Finds the PropertyTypes model based on its primary key value.
+     * Finds the PropertyStatus model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return PropertyTypes the loaded model
+     * @return PropertyStatus the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = PropertyTypes::findOne($id)) !== null) {
+        if (($model = PropertyStatus::findOne($id)) !== null) {
             return $model;
         }
 

@@ -29,6 +29,10 @@ class BackendUserController extends Controller
         ];
     }
 
+    /**
+     * @param $action
+     * @return bool
+     */
     public function beforeAction($action)
     {
         if(Yii::$app->user->isGuest) {
