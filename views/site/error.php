@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="site-error">
 
         <h1><?= Html::encode($this->title) ?></h1>
