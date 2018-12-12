@@ -30,10 +30,16 @@ use Yii;
  * @property string $landmarks
  * @property int $age_of_construction
  * @property string $available_since
+ * @property int $available_to
+ * @property int $type
+ * @property int $current_status
  * @property string $date_added
  *
+ * @property Appointment[] $appointments
  * @property Bedroom[] $bedrooms
  * @property Images[] $images
+ * @property PropertyTypes $type0
+ * @property PropertyStatus $currentStatus
  */
 class Property extends \yii\db\ActiveRecord
 {
@@ -51,12 +57,14 @@ class Property extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'slug', 'negotiable', 'price', 'bathroom', 'balconies', 'society', 'super_area', 'build_up_area', 'carpet_area', 'furnished_status', 'car_parking', 'floor', 'total_floor', 'facing', 'description', 'monthly_maintenance', 'security_deposit', 'location', 'landmarks', 'age_of_construction', 'available_since', 'date_added'], 'required'],
-            [['price', 'floor', 'total_floor', 'age_of_construction'], 'integer'],
+            [['title', 'slug', 'negotiable', 'price', 'bathroom', 'balconies', 'society', 'super_area', 'build_up_area', 'carpet_area', 'furnished_status', 'car_parking', 'floor', 'total_floor', 'facing', 'description', 'monthly_maintenance', 'security_deposit', 'location', 'landmarks', 'age_of_construction', 'available_since', 'available_to', 'type', 'current_status', 'date_added'], 'required'],
+            [['price', 'floor', 'total_floor', 'age_of_construction', 'available_to', 'type', 'current_status'], 'integer'],
             [['super_area', 'build_up_area', 'carpet_area', 'monthly_maintenance', 'security_deposit'], 'number'],
             [['date_added'], 'safe'],
             [['title', 'slug', 'negotiable', 'bathroom', 'balconies', 'society', 'furnished_status', 'car_parking', 'facing', 'location', 'landmarks', 'available_since'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 1000],
+            [['type'], 'exist', 'skipOnError' => true, 'targetClass' => PropertyTypes::className(), 'targetAttribute' => ['type' => 'id']],
+            [['current_status'], 'exist', 'skipOnError' => true, 'targetClass' => PropertyStatus::className(), 'targetAttribute' => ['current_status' => 'id']],
         ];
     }
 
@@ -89,8 +97,19 @@ class Property extends \yii\db\ActiveRecord
             'landmarks' => 'Landmarks',
             'age_of_construction' => 'Age Of Construction',
             'available_since' => 'Available Since',
+            'available_to' => 'Available To',
+            'type' => 'Type',
+            'current_status' => 'Current Status',
             'date_added' => 'Date Added',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAppointments()
+    {
+        return $this->hasMany(Appointment::className(), ['property_id' => 'id']);
     }
 
     /**
@@ -107,5 +126,21 @@ class Property extends \yii\db\ActiveRecord
     public function getImages()
     {
         return $this->hasMany(Images::className(), ['property_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getType0()
+    {
+        return $this->hasOne(PropertyTypes::className(), ['id' => 'type']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCurrentStatus()
+    {
+        return $this->hasOne(PropertyStatus::className(), ['id' => 'current_status']);
     }
 }
