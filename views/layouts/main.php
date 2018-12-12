@@ -36,9 +36,11 @@ AppAsset::register($this);
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0 mb--5" href="./index.html">
+        <a class="navbar-brand pt-0" href="./index.html">
             <?= Html::img('http://www.flatzee.com/uploads/7b6600718647854f1fc5ee0d2f9d6d33_flatzeelogo.png', ['class' => 'navbar-brand-img']) ?>
-            <p>Admin Dashboard</p>
+            <div class="d-none d-md-block mb--5">
+                <p>Admin Dashboard</p>
+            </div>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
