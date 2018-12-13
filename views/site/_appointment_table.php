@@ -1,8 +1,16 @@
 <?php use yii\helpers\Html; ?>
 
-<div class="card shadow mb-7">
+<div class="card shadow" style="height: 100%">
     <div class="card-header border-0">
-        <h3 class="mb-0">Booked Appointments</h3>
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="mb-0">Appointments <span
+                            class="badge badge-pill badge-danger"><?= $appointmentsCount ?></span></h3>
+            </div>
+            <div class="col text-right">
+                <?= Html::a('See All', ['appointment/'], ['class' => 'btn btn-sm btn-primary']) ?>
+            </div>
+        </div>
     </div>
     <div class="table-responsive">
         <table class="table align-items-center table-flush">
@@ -20,7 +28,7 @@
             </thead>
             <tbody>
             <?php foreach ($data as $i): ?>
-                <tr>
+                <tr <?= ($i->seen) ? '' : 'class="bg-gradient-lighter"' ?>>
                     <td><?= $i->id ?></td>
                     <td><?= $i->date ?></td>
                     <td><?= $i->time ?></td>
@@ -28,10 +36,10 @@
                         <?= Html::a($i->property->title, ["property/view", 'id' => $i->agent->id], ['target' => '_blank']) ?>
                     </td>
                     <td>
-                        <?= Html::a($i->usersIs->first_name." ".$i->usersIs->last_name, ["users/view", 'id' => $i->agent->id], ['target' => '_blank']) ?>
+                        <?= Html::a($i->usersIs->first_name . " " . $i->usersIs->last_name, ["users/view", 'id' => $i->agent->id], ['target' => '_blank']) ?>
                     </td>
                     <td>
-                        <?= Html::a($i->agent->first_name." ".$i->agent->last_name, ["agents/view", 'id' => $i->agent->id], ['target' => '_blank']) ?>
+                        <?= Html::a($i->agent->first_name . " " . $i->agent->last_name, ["agents/view", 'id' => $i->agent->id], ['target' => '_blank']) ?>
                     </td>
                     <td>
                         <?php
@@ -51,7 +59,7 @@
                             case 4:
                                 echo '<span class="badge badge-pill badge-success">Rented</span>';
                                 break;
-                        }?>
+                        } ?>
                     </td>
 
                     <td class="text-right">
@@ -61,9 +69,9 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <?= Html::a('View', ["view", 'id' => $i->id], ['class' => 'dropdown-item']) ?>
-                                <?= Html::a('Update', ["update", 'id' => $i->id], ['class' => 'dropdown-item']) ?>
-                                <?= Html::a('Delete', ["delete", 'id' => $i->id], ['class' => 'dropdown-item', 'data-confirm' => 'Are you sure you want to delete this item?', 'data-method' => 'POST']) ?>
+                                <?= Html::a('View', ["appointment/view", 'id' => $i->id], ['class' => 'dropdown-item']) ?>
+                                <?= Html::a('Update', ["appointment/update", 'id' => $i->id], ['class' => 'dropdown-item']) ?>
+                                <?= Html::a('Delete', ["appointment/delete", 'id' => $i->id], ['class' => 'dropdown-item', 'data-confirm' => 'Are you sure you want to delete this item?', 'data-method' => 'POST']) ?>
                             </div>
                         </div>
                     </td>

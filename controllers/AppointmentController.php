@@ -36,7 +36,7 @@ class AppointmentController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Appointment::find(),
+            'query' => Appointment::find()->orderBy(['timestamp' => SORT_DESC]),
         ]);
 
         return $this->render('index', [
@@ -52,8 +52,13 @@ class AppointmentController extends Controller
      */
     public function actionView($id)
     {
+
+        $model = $this->findModel($id);
+        $model->seen = 1;
+        $model->save();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 

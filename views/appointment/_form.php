@@ -32,7 +32,8 @@ use app\models\Users;
             'Open',
             'Visited',
             'Close',
-            'Cancelled'
+            'Cancelled',
+            'Rented'
     ]) ?>
 
     <?= $form->field($model, 'users_is')->dropDownList(ArrayHelper::map(Users::find()->all(), 'id', 'username')) ?>
