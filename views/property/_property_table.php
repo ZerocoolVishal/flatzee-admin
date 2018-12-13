@@ -36,6 +36,7 @@
                                 <?= Html::a('View', ["view", 'id' => $i->id], ['class' => 'dropdown-item']) ?>
                                 <?= Html::a('Update', ["update", 'id' => $i->id], ['class' => 'dropdown-item']) ?>
                                 <?= Html::a('Delete', ["delete", 'id' => $i->id], ['class' => 'dropdown-item', 'data-confirm' => 'Are you sure you want to delete this item?', 'data-method' => 'POST']) ?>
+                                <?= Html::a('Upload Image', ["upload-image", 'id' => $i->id], ['class' => 'dropdown-item',]) ?>
                                 <?php
                                 $bedrooms = $i->bedrooms;
                                 $i = 1;

@@ -4,12 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Property;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Bedroom;
+use app\models\UploadForm;
+use yii\web\UploadedFile;
 
 /**
  * PropertyController implements the CRUD actions for Property model.
@@ -182,5 +183,25 @@ class PropertyController extends Controller
             ]);
 
         }
+    }
+
+    /**
+     * @param $id
+     * @return string|\yii\web\Response
+     * @throws \yii\base\Exception
+     */
+    public function actionUploadImage($id)
+    {
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload($id)) {
+                return $this->redirect(["view", 'id' => $id]);
+            }
+        }
+
+        return $this->render('upload_image', ['model' => $model]);
+
     }
 }

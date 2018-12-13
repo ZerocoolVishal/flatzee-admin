@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <p>
             <?= Html::a('Update', ['update', 'id' => $model->id, 'slug' => $model->slug], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Upload Image', ['upload-image', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('Delete', ['delete', 'id' => $model->id, 'slug' => $model->slug], [
                 'class' => 'btn btn-danger',
                 'data' => [
@@ -27,6 +28,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]) ?>
         </p>
+
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <?php $i = 0;
+                foreach ($model->images as $img): ?>
+                    <div class="carousel-item <?= ($i == 0)? "active" : "" ?>">
+                        <?= Html::img("@web/$img->url", ['class' => 'd-block w-100']) ?>
+                    </div>
+                <?php $i++; endforeach; ?>
+            </div>
+            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 
         <?= DetailView::widget([
             'model' => $model,
@@ -69,11 +89,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     echo "<tr>";
                     echo "<td><b>Bedroom: $i</b></td>";
                     foreach ($bedroom->bedroomAmenities as $amenity) {
-                        echo "<td>".$amenity->amenityIr->name." ".$amenity->amenityIr->icon."</td>";
+                        echo "<td>" . $amenity->amenityIr->name . " " . $amenity->amenityIr->icon . "</td>";
                     }
                     echo "</tr>";
                     $i++;
-                }?>
+                } ?>
             </table>
         </div>
 
