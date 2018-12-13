@@ -9,10 +9,10 @@
             <thead class="thead-light">
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Title</th>
-                <th scope="col">Price</th>
-                <th scope="col">Location</th>
-                <th scope="col">Property Owner</th>
+                <th scope="col">Plan Name</th>
+                <th scope="col">Plan Type</th>
+                <th scope="col">commission</th>
+                <th scope="col">Description</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -20,12 +20,10 @@
             <?php foreach ($data as $i): ?>
                 <tr>
                     <td><?= $i->id ?></td>
-                    <td><?= $i->title ?></td>
-                    <td><?= $i->price ?></td>
-                    <td><?= $i->location ?></td>
-                    <td>
-                        <?= Html::a($i->propertyOwner->username, ['property-owner/view', 'id' => $i->propertyOwner->id]) ?>
-                    </td>
+                    <td><?= $i->plan_name ?></td>
+                    <td><?= $i->plan_type ?></td>
+                    <td><?= $i->comission ?></td>
+                    <td><?= $i->description ?></td>
                     <td class="text-right">
                         <div class="dropdown">
                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
@@ -36,15 +34,6 @@
                                 <?= Html::a('View', ["view", 'id' => $i->id], ['class' => 'dropdown-item']) ?>
                                 <?= Html::a('Update', ["update", 'id' => $i->id], ['class' => 'dropdown-item']) ?>
                                 <?= Html::a('Delete', ["delete", 'id' => $i->id], ['class' => 'dropdown-item', 'data-confirm' => 'Are you sure you want to delete this item?', 'data-method' => 'POST']) ?>
-                                <?php
-                                $bedrooms = $i->bedrooms;
-                                $i = 1;
-                                foreach ($bedrooms as $bedroom) {
-                                    echo Html::a("Bedroom $i", ["bedroom_amenity_form", 'bedroom_id' => $bedroom->id], ['class' => 'dropdown-item', 'data-method' => 'POST']);
-                                    $i++;
-                                }
-                                ?>
-                            </div>
                         </div>
                     </td>
                 </tr>

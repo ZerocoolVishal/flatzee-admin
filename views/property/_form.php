@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use \yii\helpers\ArrayHelper;
 use \app\models\PropertyStatus;
 use \app\models\PropertyTypes;
+use \app\models\PropertyOwner;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Property */
@@ -14,6 +15,8 @@ use \app\models\PropertyTypes;
 <div class="property-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'property_owner_id')->dropDownList(ArrayHelper::map(PropertyOwner::find()->all(), 'id', 'username')) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
