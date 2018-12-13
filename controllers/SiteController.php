@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\Appointment;
 use app\models\Users;
-
+use app\models\Enquiries;
 
 class SiteController extends Controller
 {
@@ -72,9 +72,12 @@ class SiteController extends Controller
             $this->redirect(['site/login']);
         }
 
+        /** Tables Data */
         $data['appointments'] = Appointment::find()->orderBy(['timestamp' => SORT_DESC])->limit(10)->all();
-        $data['appointmentsCount'] = Appointment::find()->where(['seen' => 0])->count();
+        $data['enquiries'] = Enquiries::find()->orderBy(['timestamp' => SORT_DESC])->limit(10)->all();
 
+        /** Card Data */
+        $data['appointmentsCount'] = Appointment::find()->where(['seen' => 0])->count();
         $data['totalProperties'] = Property::find()->count();
         $data['totalUsers'] = Users::find()->count();
         $data['conversion'] = floor(Appointment::find()->where(['status' => 4])->count() / Appointment::find()->count() * 100);
@@ -114,5 +117,17 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    /**
+     * Enquiries action
+     *
+     * @return string
+     */
+    public function actionEnquiries()
+    {
+        $data['enquiries'] = Enquiries::find()->orderBy(['timestamp' => SORT_DESC])->all();
+
+        return $this->render('enquiries', $data);
     }
 }

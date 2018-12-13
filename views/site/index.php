@@ -31,7 +31,7 @@ $this->title = "Admin Dashboard";
                         <div class=" dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <?= Html::a('<i class="ni ni-single-02"></i><span>My profile</span>', ['backend-user/view', 'id' => Yii::$app->user->identity->getId()], ['class' => 'dropdown-item']) ?>
+                        <?= (Yii::$app->user->isGuest)? "" : Html::a('<i class="ni ni-single-02"></i><span>My profile</span>', ['backend-user/view', 'id' => Yii::$app->user->identity->getId()], ['class' => 'dropdown-item']) ?>
                         <div class="dropdown-divider"></div>
                         <?= Html::a('<i class="ni ni-user-run"></i><span>Logout</span>', ['site/logout'], ['class' => 'dropdown-item', 'data-method' => 'POST']) ?>
                     </div>
@@ -136,8 +136,11 @@ $this->title = "Admin Dashboard";
     <!-- Page content -->
     <div class="container-fluid mt--7">
         <div class="row">
-            <div class="col-xl-12 mb-5 mb-xl-0">
+            <div class="col-xl-12 mb-5">
                 <?= $this->render('_appointment_table', ['data' => $appointments, 'appointmentsCount' => $appointmentsCount]) ?>
+            </div>
+            <div class="col-xl-12 mb-5">
+                <?= $this->render('_enquiries_table', ['data' => $enquiries]) ?>
             </div>
         </div>
 
